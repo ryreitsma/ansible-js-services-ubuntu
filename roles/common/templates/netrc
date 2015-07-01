@@ -1,0 +1,4 @@
+machine github.com
+login {{ user_github_login }}
+password {{ user_github_access_token }}
+

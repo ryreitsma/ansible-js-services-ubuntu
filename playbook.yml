@@ -1,13 +1,11 @@
----
+# There are some variables you need to define before you can run the playbook
+# - all variables in group_vars/all/main.yml
+# - create a file called group_vars/all/secrets.yml and put a variable user_github_access_token in it
+# with a personal access token from github. See https://help.github.com/articles/creating-an-access-token-for-command-line-use/
 - hosts: 127.0.0.1
   connection: local
   sudo: yes
   remote_user: rreitsma
-  vars:
-  - hostname: NLRO02-PC0845
-  - user: rreitsma
-  - user_full_name: Roelof Reitsma
-  - user_email: r.reitsma@coolblue.nl
   roles:
   - common
   

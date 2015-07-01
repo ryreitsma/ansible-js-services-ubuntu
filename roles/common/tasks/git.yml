@@ -12,3 +12,5 @@
 - name: Set kdiff3 as mergetool
   sudo_user: "{{ user }}"
   command: git config --global merge.tool kdiff3 
+- name: Add a .netrc file to the home directory
+  template: src=netrc dest=/home/{{ user }}/.netrc
