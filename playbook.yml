@@ -1,0 +1,11 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  sudo: yes
+  remote_user: rreitsma
+  vars:
+  - hostname: NLRO02-PC0845
+  - user: rreitsma
+  roles:
+  - common
+  

@@ -1,0 +1,27 @@
+---
+- name: Set the hostname
+  hostname: name={{ hostname }}
+- name: Install an edited bashrc
+  copy: src=bashrc dest=/home/{{ user }}/.bashrc owner={{ user }} group={{ user }} mode=0644
+- name: Install packages
+  apt: name={{ item }} state=present
+  with_items:
+  - git
+  - vim
+  - nodejs
+  - nodejs-dbg
+  - npm
+  - virtualbox
+- name: Check if vagrant is installed
+  command: dpkg-query -W vagrant
+  register: vagrant_check_deb
+  failed_when: vagrant_check_deb.rc > 1
+  changed_when: vagrant_check_deb.rc == 1
+- name: Download a recent Vagrant version
+  get_url: url=https://dl.bintray.com/mitchellh/vagrant/{{ vagrant_package }} dest=/tmp/{{ vagrant_package }}
+  when: vagrant_check_deb.rc == 1
+- name: Install vagrant package
+  apt: deb=/tmp/{{ vagrant_package }}
+  when: vagrant_check_deb.rc == 1  
+
+
