@@ -12,4 +12,5 @@
   - nodejs-dbg
   - npm
   - virtualbox
+  - jq
 - include: vagrant.yml
