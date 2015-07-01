@@ -6,6 +6,8 @@
   vars:
   - hostname: NLRO02-PC0845
   - user: rreitsma
+  - user_full_name: Roelof Reitsma
+  - user_email: r.reitsma@coolblue.nl
   roles:
   - common
   

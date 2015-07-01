@@ -1,0 +1,14 @@
+- name: Install packages
+  apt: name={{ item }} state=present
+  with_items:
+  - git
+  - kdiff3
+- name: Set name for git
+  sudo_user: "{{ user }}"
+  command: git config --global user.name "{{ user_full_name }}"
+- name: Set email for git
+  sudo_user: "{{ user }}"
+  command: git config --global user.email "{{ user_email }}"
+- name: Set kdiff3 as mergetool
+  sudo_user: "{{ user }}"
+  command: git config --global merge.tool kdiff3 

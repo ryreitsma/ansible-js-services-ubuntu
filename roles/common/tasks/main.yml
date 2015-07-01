@@ -1,4 +1,5 @@
 ---
+- include: git.yml
 - name: Set the hostname
   hostname: name={{ hostname }}
 - name: Install an edited bashrc
@@ -6,7 +7,6 @@
 - name: Install packages
   apt: name={{ item }} state=present
   with_items:
-  - git
   - vim
   - nodejs
   - nodejs-dbg
