@@ -14,3 +14,4 @@
   - virtualbox
   - jq
 - include: vagrant.yml
+- include: atom.yml

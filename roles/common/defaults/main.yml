@@ -1,2 +1,3 @@
 --- 
 vagrant_package: vagrant_1.7.2_x86_64.deb
+atom_package: atom_x86_64.deb
