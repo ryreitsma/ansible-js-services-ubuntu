@@ -5,12 +5,16 @@
   - kdiff3
 - name: Set name for git
   sudo_user: "{{ ubuntu_login }}"
-  command: git config --global user.name "{{ user_full_name }}"
+  command: 'git config --global user.name "{{ user_full_name }}"'
 - name: Set email for git
   sudo_user: "{{ ubuntu_login }}"
-  command: git config --global user.email "{{ user_email }}"
+  command: 'git config --global user.email "{{ user_email }}"'
 - name: Set kdiff3 as mergetool
   sudo_user: "{{ ubuntu_login }}"
-  command: git config --global merge.tool kdiff3
+  command: 'git config --global merge.tool kdiff3'
 - name: Add a .netrc file to the home directory
   template: src=netrc dest=/home/{{ ubuntu_login }}/.netrc
+- name: Set git aliases
+  command: 'git config --global alias.{{ item.alias }} "{{ item. command }}"'
+  with_items: git_aliases
+  sudo_user: "{{ ubuntu_login }}"
