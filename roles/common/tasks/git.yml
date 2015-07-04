@@ -4,13 +4,13 @@
   - git
   - kdiff3
 - name: Set name for git
-  sudo_user: "{{ user }}"
+  sudo_user: "{{ ubuntu_login }}"
   command: git config --global user.name "{{ user_full_name }}"
 - name: Set email for git
-  sudo_user: "{{ user }}"
+  sudo_user: "{{ ubuntu_login }}"
   command: git config --global user.email "{{ user_email }}"
 - name: Set kdiff3 as mergetool
-  sudo_user: "{{ user }}"
-  command: git config --global merge.tool kdiff3 
+  sudo_user: "{{ ubuntu_login }}"
+  command: git config --global merge.tool kdiff3
 - name: Add a .netrc file to the home directory
-  template: src=netrc dest=/home/{{ user }}/.netrc
+  template: src=netrc dest=/home/{{ ubuntu_login }}/.netrc
