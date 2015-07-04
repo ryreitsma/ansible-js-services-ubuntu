@@ -2,5 +2,5 @@ hostname: < See the sticker on your workstation! >
 ubuntu_login: < Ubuntu login name >
 user_full_name: < Your full name >
 user_email: < Your Coolblue email address >
-user_github_login: < Your Github login name >
-user_github_access_token: < Your personal Github access token >
+github_login: < Your Github login name >
+github_access_token: < Your personal Github access token >
