@@ -4,7 +4,7 @@
   - git
   - kdiff3
 - name: Check if name is set for git
-  sudo_user: "{{ user }}"
+  sudo_user: "{{ ubuntu_login}}"
   command: 'git config --global --get user.name'
   register: git_name
   changed_when: git_name.stdout != user_full_name
@@ -13,7 +13,7 @@
   command: 'git config --global user.name "{{ user_full_name }}"'
   when: git_name.stdout != user_full_name
 - name: Check if email is set for git
-  sudo_user: "{{ user }}"
+  sudo_user: "{{ ubuntu_login}}"
   command: 'git config --global --get user.email'
   register: git_email
   changed_when: git_name.stdout != user_email
@@ -22,7 +22,7 @@
   command: 'git config --global user.email "{{ user_email }}"'
   when: git_email.stdout != user_email
 - name: Check if kdiff3 is set as mergetool
-  sudo_user: "{{ user }}"
+  sudo_user: "{{ ubuntu_login}}"
   command: 'git config --global --get merge.tool'
   register: git_mergetool
   changed_when: git_mergetool.stdout != 'kdiff3'
