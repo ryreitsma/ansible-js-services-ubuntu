@@ -3,15 +3,33 @@
   with_items:
   - git
   - kdiff3
+- name: Check if name is set for git
+  sudo_user: "{{ user }}"
+  command: 'git config --global --get user.name'
+  register: git_name
+  changed_when: git_name.stdout != user_full_name
 - name: Set name for git
   sudo_user: "{{ ubuntu_login }}"
   command: 'git config --global user.name "{{ user_full_name }}"'
+  when: git_name.stdout != user_full_name
+- name: Check if email is set for git
+  sudo_user: "{{ user }}"
+  command: 'git config --global --get user.email'
+  register: git_email
+  changed_when: git_name.stdout != user_email
 - name: Set email for git
   sudo_user: "{{ ubuntu_login }}"
   command: 'git config --global user.email "{{ user_email }}"'
+  when: git_email.stdout != user_email
+- name: Check if kdiff3 is set as mergetool
+  sudo_user: "{{ user }}"
+  command: 'git config --global --get merge.tool'
+  register: git_mergetool
+  changed_when: git_mergetool.stdout != 'kdiff3'
 - name: Set kdiff3 as mergetool
   sudo_user: "{{ ubuntu_login }}"
   command: 'git config --global merge.tool kdiff3'
+  when: git_mergetool.stdout != 'kdiff3'
 - name: Add a .netrc file to the home directory
   template: src=netrc dest=/home/{{ ubuntu_login }}/.netrc
 - name: Set git aliases
