@@ -13,6 +13,7 @@
   - npm
   - virtualbox
   - jq
+  - shutter
 - include: vagrant.yml
 - include: atom.yml
 - include: chrome.yml
