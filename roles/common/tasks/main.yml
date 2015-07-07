@@ -3,7 +3,7 @@
 - name: Set the hostname
   hostname: name={{ hostname }}
 - name: Install an edited bashrc
-  copy: src=bashrc dest=/home/{{ ubuntu_login }}/.bashrc owner={{ ubuntu_login }} group={{ ubuntu_login }} mode=0644
+  template: src=bashrc dest=/home/{{ ubuntu_login }}/.bashrc owner={{ ubuntu_login }} group={{ ubuntu_login }} mode=0644
 - name: Add some apt repositories
   apt_repository: repo={{ item }} state=present
   with_items:
