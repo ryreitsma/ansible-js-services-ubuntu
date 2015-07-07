@@ -4,7 +4,7 @@
   - git
   - kdiff3
 - name: Check if name is set for git
-  sudo_user: "{{ ubuntu_login}}"
+  sudo_user: "{{ ubuntu_login }}"
   command: 'git config --global --get user.name'
   register: git_name
   changed_when: git_name.stdout != user_full_name
@@ -16,7 +16,7 @@
   sudo_user: "{{ ubuntu_login}}"
   command: 'git config --global --get user.email'
   register: git_email
-  changed_when: git_name.stdout != user_email
+  changed_when: git_email.stdout != user_email
 - name: Set email for git
   sudo_user: "{{ ubuntu_login }}"
   command: 'git config --global user.email "{{ user_email }}"'
@@ -36,3 +36,4 @@
   command: 'git config --global alias.{{ item.alias }} "{{ item. command }}"'
   with_items: git_aliases
   sudo_user: "{{ ubuntu_login }}"
+  changed_when: false
