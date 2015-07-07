@@ -98,9 +98,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export LD_LIBRARY_PATH=/home/{{ ubuntu_login }}/oracle/instantclient:$LD_LIBRARY_PATH
-export OCI_LIB_DIR=/home/{{ ubuntu_login }}/oracle/instantclient
-export OCI_INC_DIR=/home/{{ ubuntu_login }}/oracle/instantclient/sdk/include
+export LD_LIBRARY_PATH={{ oracle_instantclient_home }}:$LD_LIBRARY_PATH
+export OCI_LIB_DIR={{ oracle_instantclient_home }}
+export OCI_INC_DIR={{ oracle_instantclient_home }}/sdk/include
+export TNS_ADMIN={{ oracle_instantclient_home }}
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

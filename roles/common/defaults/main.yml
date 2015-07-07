@@ -1,3 +1,5 @@
---- 
+---
 vagrant_package: vagrant_1.7.2_x86_64.deb
 atom_package: atom_x86_64.deb
+oracle_home: /home/{{ ubuntu_login }}/oracle
+oracle_instantclient_home: "{{ oracle_home }}/instantclient"

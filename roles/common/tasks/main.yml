@@ -19,6 +19,8 @@
   - shutter
   - openjdk-7-jdk
   - openjdk-8-jdk
+  - libaio1
 - include: vagrant.yml
 - include: atom.yml
 - include: chrome.yml
+- include: oracle.yml
