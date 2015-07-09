@@ -1,0 +1,38 @@
+- name: Install dependent packages
+  apt: name=libaio1 state=present
+- name: Create directory for oracle instantclient
+  file: path={{ oracle_instantclient_home }} state=directory recurse=yes owner={{ ubuntu_login }} group={{ ubuntu_login }}
+- name: Copy the tnsnames file
+  copy: src=tnsnames.ora dest={{ oracle_instantclient_home }}
+- name: Copy the instantclient directory to
+  copy: src=instantclient dest={{ oracle_home }} owner={{ ubuntu_login }} group={{ ubuntu_login }}
+- name: Create a symlink for base .so file
+  file: src={{ oracle_instantclient_home }}/libclntsh.so.12.1 dest={{ oracle_instantclient_home }}/libclntsh.so state=link
+- name: Add LD_LIBRARY_PATH variable
+  lineinfile:
+    dest: "{{ item }}"
+    line: "export LD_LIBRARY_PATH={{ oracle_instantclient_home }}:$LD_LIBRARY_PATH"
+  with_items:
+  - /root/.bashrc
+  - /home/{{ ubuntu_login }}/.bashrc
+- name: Add environment variables
+  lineinfile:
+    dest: "{{ item }}"
+    line: "export OCI_LIB_DIR={{ oracle_instantclient_home }}"
+  with_items:
+  - /root/.bashrc
+  - /home/{{ ubuntu_login }}/.bashrc
+- name: Add environment variables
+  lineinfile:
+    dest: "{{ item }}"
+    line: "export OCI_INC_DIR={{ oracle_instantclient_home }}/sdk/include"
+  with_items:
+  - /root/.bashrc
+  - /home/{{ ubuntu_login }}/.bashrc
+- name: Add environment variables
+  lineinfile:
+    dest: "{{ item }}"
+    line: "export TNS_ADMIN={{ oracle_instantclient_home }}"
+  with_items:
+  - /root/.bashrc
+  - /home/{{ ubuntu_login }}/.bashrc

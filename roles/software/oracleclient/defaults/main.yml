@@ -1,0 +1,2 @@
+oracle_home: /home/{{ ubuntu_login }}/oracle
+oracle_instantclient_home: "{{ oracle_home }}/instantclient"

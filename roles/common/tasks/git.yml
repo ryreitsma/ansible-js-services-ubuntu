@@ -37,3 +37,6 @@
   with_items: git_aliases
   sudo_user: "{{ ubuntu_login }}"
   changed_when: false
+- name: Make sure vim is used as visual editor (prevents the awful nano stuff)
+  lineinfile: dest=/home/{{ ubuntu_login }}/.bashrc line="export VISUAL=vim"
+- lineinfile: dest=/home/{{ ubuntu_login }}/.bashrc line="export EDITOR='$VISUAL'"

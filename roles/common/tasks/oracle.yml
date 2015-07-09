@@ -1,8 +1,0 @@
-- name: Create directory for oracle instantclient
-  file: path={{ oracle_instantclient_home }} state=directory recurse=yes owner={{ ubuntu_login }} group={{ ubuntu_login }}
-- name: Copy the tnsnames file
-  copy: src=tnsnames.ora dest={{ oracle_instantclient_home }}
-- name: Copy the instantclient directory to
-  copy: src=instantclient dest={{ oracle_home }} owner={{ ubuntu_login }} group={{ ubuntu_login }}
-- name: Create a symlink for base .so file
-  file: src={{ oracle_instantclient_home }}/libclntsh.so.12.1 dest={{ oracle_instantclient_home }}/libclntsh.so state=link
