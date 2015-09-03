@@ -161,17 +161,8 @@ VANSPW =
 
 SPAWN2=
   (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = nlam01-devora01-vip.servers.coolblue.nl)(PORT = 1521))
-    (ADDRESS = (PROTOCOL = TCP)(HOST = nlam02-devora02-vip.servers.coolblue.nl)(PORT = 1521))
-    (LOAD_BALANCE = yes)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = nlam01-devora-scan.servers.coolblue.nl)(PORT = 1521))
     (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = spawn2)
-      (FAILOVER_MODE =
-        (TYPE = SELECT)
-        (METHOD = BASIC)
-        (RETRIES = 180)
-        (DELAY = 5)
-      )
+      (SERVICE_NAME = spawn2_srv)
     )
   )
